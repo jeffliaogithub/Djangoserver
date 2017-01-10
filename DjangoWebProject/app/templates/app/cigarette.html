@@ -1,0 +1,144 @@
+{% extends "app/layout.html" %}
+
+
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 80%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd; 
+}
+
+div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+
+div.panel.show {
+    display: block;
+}
+</style>
+</head>
+<button class="summary" name="summary" onclick="window.location.href='/detail'"> Get Summary Report </button>
+</p>
+<!--
+<h3>{{ message }}</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+--> 
+<!--
+<table width="500">
+    <tr>
+{% for data in data_list %}
+    {% if not forloop.last and forloop.counter == 1 or forloop.counter == 2 %}
+        <th>{{ data }}</th>
+    {% else %}
+        <td>{{ data }}</td>
+    {% endif %}
+    {% if not forloop.last and forloop.counter|divisibleby:"2" %}
+    </tr>    
+    {% endif %}
+{% endfor %}
+    </tr>
+</table>
+<button class="accordion">Section 1</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <table width="500">
+    <tr>
+    {% for data in data_list %}
+        {% if not forloop.last and forloop.counter == 1 or forloop.counter == 2 %}
+            <th>{{ data }}</th>
+        {% else %}
+            <td>{{ data }}</td>
+        {% endif %}
+        {% if not forloop.last and forloop.counter|divisibleby:"2" %}
+        </tr>       
+        {% endif %}
+    {% endfor %}
+    </tr>
+</table>
+</div>
+
+<button class="accordion">Section 2</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+<button class="accordion">Section 3</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+-->
+{% for row in data_list %}
+    <button class="accordion" name={{ row.0}}>{{ row.0|add:" you smoked "|add:row.1|add:" cigarette"  }}</button>
+    <a href={{ "/detail/?date="|add:row.0 }} width=20% style="float: right;">Get details</a>
+    <div class="panel">
+        {% for col in row.2 %}
+            <table width="500">
+            <tr>
+            {% for data in col %}
+                {% if not forloop.last and forloop.counter == 1 or forloop.counter == 2 %}
+                    <th>{{ data }}</th>
+                {% else %}
+                    <td>{{ data }}</td>
+                {% endif %}
+                {% if not forloop.last and forloop.counter|divisibleby:"2" %}
+                </tr>       
+                {% endif %}
+            {% endfor %}
+            </tr>
+            </table>               
+        {% endfor %}
+    </div>   
+{% endfor %}
+
+<!--<img src="/static/temp/test.jpg" width="400" height="500" alt="funny dog sitting on the grass.">-->
+
+<script>   
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(e){
+        var target = e.target
+        
+        this.classList.toggle("active");
+        this.nextElementSibling.nextElementSibling.classList.toggle("show");
+  }
+}
+
+</script>
+
+{% endblock %}
