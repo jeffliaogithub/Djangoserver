@@ -39,8 +39,8 @@ def converttodate(string):
     date=datetime.datetime.strptime(string[:offset], "%d/%m/%Y %H:%M:%S")    
     return date
 
-def key_function(x):        
-    return (x[0].date())
+def key_function(x):           
+    return (x[0].date())        
 
 def GetData(datafile,datestring = None):    
     data = []
