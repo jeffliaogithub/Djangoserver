@@ -120,6 +120,21 @@ def cigarette(request):
         }
     )
 
+
+
+def facebook(request):
+    
+    assert isinstance(request, HttpRequest)
+    
+    return render(
+        request,
+        'app/facebook.html',
+        #'app/facebooklogin.html',
+        {
+            
+        }
+    )
+
 def detail(request):
     """Renders the about page."""   
     tmpfilename = "app/static/temp/test.png"    

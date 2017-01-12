@@ -59,6 +59,7 @@
     <Content Include="app\mydata" />
     <Content Include="app\templates\app\cigarette.html" />
     <Content Include="app\templates\app\detail.html" />
+    <Content Include="app\templates\app\facebook.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

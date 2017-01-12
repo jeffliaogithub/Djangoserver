@@ -12,6 +12,9 @@ if __name__ == "__main__":
         "DjangoWebProject.settings"
     )
 
+
+
+
     from django.core.management import execute_from_command_line
     #sys.argv[5]='8000'
     execute_from_command_line(sys.argv)
