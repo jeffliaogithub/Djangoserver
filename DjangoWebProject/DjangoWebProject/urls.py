@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^about', app.views.about, name='about'),
     url(r'^cigarette', app.views.cigarette, name='cigarette'),
     url(r'^detail', app.views.detail, name='detail'),
-    url(r'^facebook', app.views.facebook, name='facebook'),
+    url(r'^facebook$', app.views.facebook, name='facebook'),
     #url(r'^cigarette', app.views.cigarette, name='123'),
     url(r'^login/$',
         django.contrib.auth.views.login,

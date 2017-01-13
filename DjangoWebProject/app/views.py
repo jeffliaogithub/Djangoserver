@@ -17,6 +17,7 @@ from plotutil import PreparePlotDataWithTime
 from plotutil import  PlotData
 from plotutil import  PreparePlotWithDate
 from plotutil import convertdatetodaystring
+from .forms import NameForm
 
 
 
@@ -122,10 +123,21 @@ def cigarette(request):
 
 
 
+
 def facebook(request):
     
     assert isinstance(request, HttpRequest)
-    
+    if request.method == 'POST':
+        print(request.POST)
+        form = NameForm(request.POST)                
+        if form.is_valid():
+            subject = form.cleaned_data['username']
+            print(subject)
+            subject = form.cleaned_data['password']
+            print(subject)
+        
+        
+
     return render(
         request,
         'app/facebook.html',
