@@ -47,11 +47,16 @@ def GetData(datafile,datestring = None):
     if os.path.isfile(datafile):
         with open(datafile) as f:
             for line in f:   
-                line = line.rstrip()                 
-                date, cigarette = line.split(",")
+                line = line.rstrip()  
+                try:                 
+                    date, cigarette = line.split(",")
+                    dateobject = converttodate (date)
+                    data.append((dateobject,cigarette))  
+                except:
+                    print("can't parse this line", line)
+        
             
-                dateobject = converttodate (date)
-                data.append((dateobject,cigarette))  
+                
             
 
     data = sorted(data, key=key_function)
